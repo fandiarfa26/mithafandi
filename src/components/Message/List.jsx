@@ -1,26 +1,22 @@
 import React from 'react'
+import MessageItem from './Item'
 
-const MessageList = () => {
-  return (
-    <div>
-      <div>
-        <div>A</div>
-        <div>Alpha</div>
-        <div>Hadir</div>
-        <div>20 menit yg lalu</div>
-        <div>Semoga lancar ya </div>
-        <div>----------</div>
-      </div>
-      <div>
-        <div>B</div>
-        <div>Beta</div>
-        <div>Tidak Hadir</div>
-        <div>1 hari yg lalu</div>
-        <div>Samawa ya </div>
-        <div>----------</div>
-      </div>
-    </div>
-  )
+const MessageList = ({data, code, getMessages}) => {
+  
+
+  
+    if (data.length === 0) {
+      return <div>Tidak ada ucapan.</div>
+    } else {
+      return (
+        <div className='w-full'>
+          {
+            data.map((item, i) => <MessageItem key={i} message={item} code={code} getMessages={getMessages}/>)
+          }
+        </div>
+      )
+    }
+  
 }
 
 export default MessageList

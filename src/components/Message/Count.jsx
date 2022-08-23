@@ -1,11 +1,18 @@
 import React from 'react'
+import CountItem from './CountItem'
 
-const MessageCount = () => {
+const MessageCount = ({count}) => {
   return (
-    <div>
-      <div>? ucapan</div>
-      <div>? hadir</div>
-      <div>? tidak hadir</div>
+    <div className='flex items-center gap-2'>
+      <CountItem
+        count={count.all !== undefined ? count.all : '?'}
+        label="ucapan" />
+      <CountItem
+        count={count.present !== undefined ? count.present : '?'}
+        label="hadir" />
+      <CountItem
+        count={count.notpresent !== undefined ? count.notpresent : '?'}
+        label="tidak hadir" />
     </div>
   )
 }
