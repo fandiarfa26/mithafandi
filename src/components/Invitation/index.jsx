@@ -70,9 +70,9 @@ const Invitation = () => {
         <Hero/>
         <div className="relative flex flex-col bg-white lg:flex-row">
             <SideText/>
-            <div className='flex-1 px-5 lg:px-10'>
+            <div className='flex-1 lg:px-10'>
               <Quran/>
-              <div className='relative z-0 py-20 border-4 drop-shadow-xl bg-coklat-light border-coklat-dark'>
+              <div className='relative z-0 py-20 overflow-hidden border-4 lg:overflow-visible drop-shadow-xl bg-coklat-light border-coklat-dark'>
                 <Bio greet={invitee.greet}/>
                 <Schedule/>
                 <Gift/>
@@ -88,7 +88,6 @@ const Invitation = () => {
           <img src={topLeftFlower} alt="Top Left Flower" className='absolute top-0 left-0 h-28 lg:h-48' />
           <img src={bottomRightFlower} alt="Bottom Right Flower" className='absolute bottom-0 right-0 hidden h-28 lg:h-48 lg:block' />
         </div>
-        <div className='h-16 lg:h-0'></div>
       </div>
     )
   }

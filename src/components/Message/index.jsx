@@ -41,10 +41,10 @@ const Message = ({invitee}) => {
   }, [getMessages]);
 
   return (
-    <div id="messages" className='relative flex flex-col justify-center w-full gap-5 px-2 py-10 lg:py-20 lg:px-10 lg:flex-row'>
-      <div className='self-start w-full p-4 border-4 border-white shadow-xl lg:p-6 lg:w-1/2 bg-coklat-dark bg-opacity-20'>
+    <div id="messages" className='relative flex flex-col justify-center w-full gap-5 py-10 lg:py-20 lg:px-10 lg:flex-row'>
+      <div className='self-start w-full p-3 border-4 border-white shadow-xl lg:p-6 lg:w-1/2 bg-coklat-dark bg-opacity-20'>
         <div className='mb-2 text-xl font-bree '>Ucapan</div>
-        <div className="pr-10 mb-5 text-sm">Berikan ucapan terbaik untuk kedua mempelai.</div>
+        <div className="pr-16 mb-5 text-sm">Berikan ucapan terbaik untuk kedua mempelai.</div>
         <MessageForm invitee={invitee} getMessages={getMessages}/>
       </div>
       <div className='w-full p-4 border-4 border-white shadow-xl lg:p-10 lg:translate-y-20 lg:w-1/2 bg-coklat-dark bg-opacity-20'>

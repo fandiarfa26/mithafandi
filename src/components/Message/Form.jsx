@@ -84,7 +84,7 @@ const MessageForm = ({invitee, getMessages}) => {
         <label htmlFor="confirm" className='flex flex-col gap-1'>
           <span  className="text-sm">Konfirmasi</span>
           <div className='flex flex-col gap-4 lg:flex-row lg:items-center '>
-            <label htmlFor="confirm_true" className='flex items-center flex-1 gap-3 px-3 py-1 text-sm bg-white border-2 border-white cursor-pointer hover:border-coklat-dark'>
+            <label htmlFor="confirm_true" className='flex items-center flex-1 gap-3 px-3 py-1 bg-white border-2 border-white cursor-pointer hover:border-coklat-dark'>
               <input 
                 type="radio" 
                 id="confirm_true" 
@@ -95,7 +95,7 @@ const MessageForm = ({invitee, getMessages}) => {
                 onChange={ (e) => setConfirm(e.target.value)} required />
               <span>Hadir</span>
             </label>
-            <label htmlFor="confirm_false" className='flex items-center flex-1 gap-3 px-3 py-1 text-sm bg-white border-2 border-white cursor-pointer hover:border-coklat-dark'>
+            <label htmlFor="confirm_false" className='flex items-center flex-1 gap-3 px-3 py-1 bg-white border-2 border-white cursor-pointer hover:border-coklat-dark'>
               <input 
                 type="radio" 
                 id="confirm_false" 

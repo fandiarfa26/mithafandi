@@ -13,12 +13,12 @@ const IntroLayout = (props) => {
         <SideText/>
       </div>
       <div className='w-screen bg-fixed bg-center bg-cover lg:h-screen' style={{ backgroundImage: `url(${bgFlower})`}}>
-        <div className='flex flex-col items-center justify-center px-3 pb-10 pt-36 lg:p-0 lg:flex-row bg-opacity-70 bg-ijo-dark'>
+        <div className='flex flex-col items-center justify-center h-screen px-3 pb-3 lg:p-0 lg:flex-row bg-opacity-70 bg-ijo-dark'>
           <IntroPhoto/>
-          <div className='flex flex-col items-center justify-center w-full px-5 pb-10 bg-white pt-28 lg:pt-0 lg:pb-0 lg:h-screen lg:w-1/2'>
+          <div className='flex flex-col items-center justify-center w-full px-5 pt-10 pb-5 bg-white lg:pt-0 lg:pb-0 lg:h-screen lg:w-1/2'>
             <WeddingText/>
             <CoupleName />
-            <img src={flower7} alt="flower7" className="my-5 h-28 lg:h-32" />
+            <img src={flower7} alt="flower7" className="hidden h-10 my-3 lg:my-5 lg:h-32 lg:block" />
             {props.children}
           </div>
         </div>

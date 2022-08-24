@@ -32,8 +32,8 @@ const MenuLinks = () => {
   ];
   return (
     
-      <div className='fixed inset-x-0 bottom-0 z-10 items-end hidden lg:flex lg:h-screen lg:sticky lg:top-0 '>
-        <div className='flex flex-row items-center justify-center w-screen gap-5 p-3 bg-white shadow-2xl bg-opacity-90 lg:gap-3 lg:flex-col lg:w-auto lg:h-screen lg:bg-transparent lg:shadow-none'>
+      <div className='flex items-end lg:h-screen lg:sticky lg:top-0'>
+        <div className='flex flex-row items-center justify-center w-screen gap-5 p-3 border-2 bg-ijo-light border-ijo-dark bg-opacity-90 lg:gap-3 lg:flex-col lg:border-none lg:w-auto lg:h-screen lg:bg-transparent'>
           <div className='flex-1 border border-dashed border-slate-900'></div>
             {
               menus.map((item, i) => (

@@ -23,7 +23,7 @@ const Countdown = () => {
   }, [getTime]);
 
   return (
-    <div className='grid w-full grid-cols-4 lg:gap-10 lg:w-1/2'>
+    <div className='grid w-full grid-cols-4 lg:gap-5 lg:w-1/2'>
       <CountdownItem num={days} label="hari"/>
       <CountdownItem num={hours} label="jam"/>
       <CountdownItem num={minutes} label="menit"/>

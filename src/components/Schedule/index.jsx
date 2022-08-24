@@ -6,8 +6,8 @@ import bgFlower from '../../assets/images/bg_flower2.jpg'
 
 const Schedule = () => {
   return (
-    <div id="schedule" className='relative flex justify-center w-full px-5 py-5 lg:py-10 lg:px-20'>
-        <div className='w-full bg-fixed bg-center bg-cover border-4 border-white shadow-xl' style={{ backgroundImage: `url(${bgFlower})`}}>
+    <div id="schedule" className='relative flex justify-center w-full lg:py-10 lg:px-20'>
+        <div className='w-full bg-fixed bg-center bg-cover border-4 border-white drop-shadow-xl' style={{ backgroundImage: `url(${bgFlower})`}}>
           <div className='p-5 lg:p-10 bg-coklat-light bg-opacity-80'>
             <div className="flex flex-col items-start gap-10 lg:flex-row">
               <ScheduleItem 
@@ -22,7 +22,7 @@ const Schedule = () => {
             <Location/>
           </div>
         </div>
-        <img src={flower4} alt="Flower4" className='absolute -top-10 h-36 lg:h-48 lg:top-20 -left-20 lg:-left-10 lg:-rotate-12' />
+        <img src={flower4} alt="Flower4" className='absolute -top-16 h-36 lg:h-48 lg:top-20 -left-20 lg:-left-10 lg:-rotate-12' />
       </div>
   )
 }

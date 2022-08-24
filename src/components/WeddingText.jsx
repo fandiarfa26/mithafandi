@@ -2,7 +2,7 @@ import React from 'react'
 
 const WeddingText = () => {
   return (
-    <div className='mb-5 text-2xl lg:mb-10 font-bree'>Pernikahan</div>
+    <div className='mb-5 text-sm lg:mb-10 lg:text-2xl font-bree'>Pernikahan</div>
   )
 }
 

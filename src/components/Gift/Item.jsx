@@ -12,12 +12,12 @@ const GiftItem = (props) => {
   return (
     <div className='flex flex-col items-center flex-1 w-full gap-1'>
       
-      <img src={briImage} alt="BRI" className='h-28 lg:h-32 ' />
+      <img src={briImage} alt="BRI" className='mb-5 w-28 lg:w-32' />
       <div className='text-sm'>No. Rekening</div>
       <div className='text-xl'>{props.number}</div>
-      <div>a.n {props.name}</div>
+      <div className="mb-3">a.n {props.name}</div>
       
-      <button type="button" onClick={handleCopy} className='flex items-center gap-2 px-4 py-2 mt-3 text-sm border-2 border-transparent hover:border-coklat-dark'>
+      <button type="button" onClick={handleCopy} className='flex items-center gap-2 px-4 py-2 text-sm border-2 border-coklat-dark hover:border-ijo-dark hover:bg-ijo-light'>
         <FiCopy className='w-5 h-5'/>
         <span>Copy No. Rekening</span>
       </button>
