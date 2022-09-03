@@ -15,20 +15,20 @@ const Message = ({invitee}) => {
   const getMessages = useCallback(async () => {
     setLoading(true);
     try {
-      const messageSnapshot = await getDocs(query(collection(db, 'messages'), where('deleted', '==', false), orderBy('date', 'desc')));
+      const allMessageSnapshot = await getDocs(query(collection(db, 'messages'), where('deleted', '==', false), orderBy('date', 'desc')));
       
-      if (messageSnapshot.empty) {
-        setData([]);
-        setCount({all: 0, present: 0, notpresent: 0});
-      } else {
-        setData(messageSnapshot.docs);
-        const messagePresentSnapshot = await getDocs(query(collection(db, 'messages'), where('deleted', '==', false), where('confirm', '==', 'Hadir')));
+      // if (allMessageSnapshot.empty) {
+      //   setData([]);
+      //   setCount({all: 0, present: 0, notpresent: 0});
+      // } else {
+        setData(allMessageSnapshot.docs);
+        const presentSnapshot = await getDocs(query(collection(db, 'messages'), where('deleted', '==', false), where('confirm', '==', 'Hadir')));
         setCount({
-          all: messageSnapshot.size, 
-          present: messagePresentSnapshot.size, 
-          notpresent: messageSnapshot.size - messagePresentSnapshot.size,
+          all: allMessageSnapshot.size, 
+          present: presentSnapshot.size, 
+          notpresent: allMessageSnapshot.size - presentSnapshot.size,
         });
-      }
+      //}
       setLoading(false);
     } catch (error) {
       console.error(error.message);
@@ -36,25 +36,29 @@ const Message = ({invitee}) => {
     }
   }, []);
 
+  const loadMessages = () => {
+    if (loading) {
+      return <div className='py-4 text-center'>Tunggu bentar yaa...</div>
+    }
+    return <MessageList data={data} code={invitee.code} getMessages={getMessages}/>
+  }
+
   useEffect(() => {
     getMessages();
   }, [getMessages]);
 
   return (
-    <div id="messages" className='relative flex flex-col justify-center w-full gap-5 py-10 lg:py-20 lg:px-10 lg:flex-row'>
-      <div className='self-start w-full p-3 border-4 border-white shadow-xl lg:p-6 lg:w-1/2 bg-coklat-dark bg-opacity-20'>
+    <div id="messages" className='relative flex flex-col items-start justify-center w-full gap-5 py-10 lg:py-20 lg:px-10 lg:flex-row'>
+      <div className='w-full p-3 border-4 border-white shadow-xl lg:p-6 lg:w-1/2 bg-coklat-dark bg-opacity-20'>
         <div className='mb-2 text-xl font-bree '>Ucapan</div>
         <div className="pr-16 mb-5 text-sm">Berikan ucapan terbaik untuk kedua mempelai.</div>
         <MessageForm invitee={invitee} getMessages={getMessages}/>
       </div>
-      <div className='w-full p-4 border-4 border-white shadow-xl lg:p-10 lg:translate-y-20 lg:w-1/2 bg-coklat-dark bg-opacity-20'>
-        <div className="flex justify-center mb-5">
+      <div className='w-full border-4 border-white shadow-xl lg:translate-y-20 lg:w-1/2 bg-coklat-dark bg-opacity-20'>
+        <div className="flex justify-center my-5">
           <MessageCount count={count}/>
         </div>
-        
-        {
-          !loading && <MessageList data={data} code={invitee.code} getMessages={getMessages}/>
-        }
+        { loadMessages() }
       </div>
       <img src={flower1} alt="Flower1" className='absolute h-32 lg:h-48 top-5 -right-10' />
     </div>

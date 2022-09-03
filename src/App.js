@@ -1,6 +1,9 @@
 
 import { useEffect } from 'react';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Invitation from './components/Invitation';
 import NotFound from './components/NotFound';
 import Welcome from './components/Welcome';
@@ -15,6 +18,8 @@ const RouteApp = () => {
 }
 
 function App() {
+  AOS.init();
+
   useEffect(() => {
     document.title = "Pernikahan Mitha & Fandi"
   }, []);

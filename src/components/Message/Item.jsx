@@ -49,7 +49,7 @@ const MessageItem = ({message, code, getMessages}) => {
 
   return (
     
-      <div className='flex items-start w-full py-2'>
+      <div className='flex items-start w-full px-4 py-2'>
         <div className="items-center justify-center hidden w-10 h-10 text-xl text-white lg:flex bg-coklat-dark drop-shadow-lg">{message.data().name.charAt(0).toUpperCase()}</div>
         <div className="relative flex-1 p-3 bg-white border-2 border-coklat-dark drop-shadow-lg">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-3">

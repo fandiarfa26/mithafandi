@@ -6,8 +6,8 @@ const Gift = () => {
   return (
     <div id="gift" className='px-5 py-10 lg:px-20'>
       <div className="flex flex-col items-center gap-5">
-        <div className='text-xl text-center font-bree'>Amplop Digital</div>
-        <p className='text-xs text-center lg:text-base lg:w-3/4'>Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.</p>
+        <div data-aos="fade-up" className='text-xl text-center font-bree'>Amplop Digital</div>
+        <p data-aos="fade-up" className='text-xs text-center lg:text-base lg:w-3/4'>Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.</p>
         <div className="flex flex-col items-start w-full gap-5 py-5 lg:flex-row lg:gap-2">
           <GiftItem
             number='0006 0109 3069 500'
