@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef, useCallback} from 'react'
 import {TbMusic,  TbMusicOff} from 'react-icons/tb'
-import audioSrc from '../../assets/audio/perfect-piano.ogg'
+import audioSrc from '../../assets/audio/perfect-piano.mp3'
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true)

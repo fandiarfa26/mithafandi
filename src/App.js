@@ -12,13 +12,15 @@ const RouteApp = () => {
   let routes = useRoutes([
     { path: "/", element: <Welcome /> },
     { path: "/to/:inviteeId", element: <Invitation /> },
-    { path: "*", element: <NotFound/> }
+    { path: "*", element: <NotFound /> }
   ]);
   return routes;
 }
 
 function App() {
-  AOS.init();
+  AOS.init({
+    once: true
+  });
 
   useEffect(() => {
     document.title = "Pernikahan Mitha & Fandi"
