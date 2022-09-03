@@ -8,7 +8,7 @@ const ScrollToBottom = () => {
             <span className="text-sm ">Scroll ke bawah</span>
             <BiMouse className='w-6 h-6'/> 
           </div>
-          <div className="py-4 border border-white"></div>
+          <div className="py-4 bg-white border border-white"></div>
         </div>
   )
 }

@@ -20,7 +20,7 @@ const MusicPlayer = () => {
 
   return (
     <div className='absolute inset-x-0 top-0 flex flex-col items-center justify-center'>
-      <div className="py-2 border border-white"></div>
+      <div className="py-2 bg-white border border-white"></div>
       <div  onClick={() => setIsPlaying(!isPlaying)} className='flex items-center gap-2 p-2 text-white border-2 border-white cursor-pointer backdrop-blur-sm hover:bg-ijo-light hover:border-ijo-dark hover:text-slate-900'>
         {
           isPlaying ? <TbMusic className="w-5 h-5"/> : <TbMusicOff className="w-5 h-5"/>

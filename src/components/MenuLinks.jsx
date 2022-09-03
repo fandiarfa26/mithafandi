@@ -34,7 +34,7 @@ const MenuLinks = () => {
     
       <div className='flex items-end lg:h-screen lg:sticky lg:top-0'>
         <div className='flex flex-row items-center justify-center w-screen gap-5 p-3 border-2 bg-ijo-light border-ijo-dark bg-opacity-90 lg:gap-3 lg:flex-col lg:border-none lg:w-auto lg:h-screen lg:bg-transparent'>
-          <div className='flex-1 border border-dashed border-slate-900'></div>
+          <div className='flex-1 border border-transparent border-dashed lg:border-slate-900'></div>
             {
               menus.map((item, i) => (
                 <ScrollIntoView key={i} selector={item.to} className='p-2 border-2 border-white rounded-full cursor-pointer hover:bg-ijo-light' title={item.title}>
@@ -42,7 +42,7 @@ const MenuLinks = () => {
                 </ScrollIntoView>
               ))
             } 
-          <div className='flex-1 border border-dashed border-slate-900'></div>
+          <div className='flex-1 border border-transparent border-dashed lg:border-slate-900'></div>
         </div>
         
       </div>
