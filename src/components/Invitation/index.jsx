@@ -23,6 +23,7 @@ import Thanks from '../Thanks';
 import Credit from '../Credit';
 import LoadingPage from '../LoadingPage';
 import NotFound from '../NotFound';
+import Gallery from '../Gallery';
 
 const Invitation = () => {
   const { inviteeId } = useParams();
@@ -84,6 +85,7 @@ const Invitation = () => {
                   <div className='relative z-0 py-20 overflow-hidden border-4 lg:overflow-visible drop-shadow-xl bg-coklat-light border-coklat-dark'>
                     <Bio greet={invitee.greet}/>
                     <Schedule/>
+                    <Gallery/>
                     <Gift/>
                     <Protocol/>
                     <Message invitee={invitee}/>
