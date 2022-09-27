@@ -6,7 +6,7 @@ import IntroLayout from '../Intro/Layout'
 const Welcome = () => {
   
   return (
-    <IntroLayout>
+    <IntroLayout from="Fandi">
       <Countdown />
       <WelcomeForm/>
     </IntroLayout>

@@ -17,7 +17,7 @@ const IntroLayout = (props) => {
           <IntroPhoto/>
           <div className='flex flex-col items-center justify-center w-full px-5 pt-10 pb-5 bg-white lg:pt-0 lg:pb-0 lg:h-screen lg:w-1/2'>
             <WeddingText/>
-            <CoupleName />
+            <CoupleName from={props.from} />
             <img src={flower7} alt="flower7" className="hidden h-10 my-3 lg:my-5 lg:h-32 lg:block" />
             {props.children}
           </div>

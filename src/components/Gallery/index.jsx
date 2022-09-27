@@ -15,7 +15,7 @@ import BigPhoto from './BigPhoto'
 const Gallery = () => {
   return (
     <div id="gift" className='flex items-center justify-center px-5 py-24 lg:px-20'>
-      <div className="flex flex-col flex-wrap items-center justify-center bg-white shadow-xl lg:flex-row lg:scale-110">
+      <div className="flex flex-col flex-wrap items-center justify-center lg:flex-row">
         <div className="flex flex-wrap w-72">
           <SmallPhoto image={gallery1}/>
           <SmallPhoto image={gallery2}/>
@@ -23,7 +23,6 @@ const Gallery = () => {
           <SmallPhoto image={gallery4}/>
         </div>
         <BigPhoto image={gallery5}/>
-        
         <div className="flex flex-wrap w-72">
           <SmallPhoto image={gallery7}/>
           <SmallPhoto image={gallery8}/>
@@ -31,7 +30,6 @@ const Gallery = () => {
           <SmallPhoto image={gallery10}/>
         </div>
         <BigPhoto image={gallery6}/>
-        
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import mithaPhoto from '../../assets/images/mitha.jpg'
 import fandiPhoto from '../../assets/images/fandi.jpg'
 import BioItem from './Item'
 
-const Bio = ({greet}) => {
+const Bio = ({greet, from}) => {
   return (
     <div id="bio" className='px-5 pb-10 lg:px-20'>
       <div className="flex flex-col items-center gap-5">
@@ -13,18 +13,14 @@ const Bio = ({greet}) => {
         <p data-aos="fade-up" className='text-xs text-center lg:text-base lg:w-3/4'>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Kami mengundang {greet} untuk menghadiri acara pernikahan kami.</p>
         <div className="flex flex-col items-start w-full gap-5 py-5 lg:flex-row">
           <BioItem 
-            pic={mithaPhoto}
-            name="Desy Rosmita Maharani, S.Pd."
-            childof="Putri ketiga dari"
-            parent="Bapak Maharani Kahar & Ibu St. Rumiyati"
-            instagram="dsyrsmitam"/>
+            pic={from === 'Fandi' ? fandiPhoto : mithaPhoto}
+            name={from === 'Fandi' ? "M. Fandi Arfabuma, S.T.": "Desy Rosmita Maharani, S.Pd."}
+            instagram={from === 'Fandi' ? "fandiarfa" : "dsyrsmitam"}/>
           <img src={flower} alt="Flower" className='self-center h-28 lg:h-32' />
           <BioItem 
-            pic={fandiPhoto}
-            name="M. Fandi Arfabuma, S.T."
-            childof="Putra pertama dari"
-            parent="Bapak Suhardi & Ibu Latifah"
-            instagram="fandiarfa"/>
+            pic={from === 'Mitha' ? fandiPhoto : mithaPhoto}
+            name={from === 'Mitha' ? "M. Fandi Arfabuma, S.T.": "Desy Rosmita Maharani, S.Pd."}
+            instagram={from === 'Mitha' ? "fandiarfa" : "dsyrsmitam"}/>
         </div>
       </div>
     </div>

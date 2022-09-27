@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import DocumentMeta from 'react-document-meta';
 
 import Invitation from './components/Invitation';
 import NotFound from './components/NotFound';
@@ -23,12 +24,12 @@ function App() {
   });
 
   useEffect(() => {
-    document.title = "Pernikahan Mitha & Fandi"
+    document.title = "Pernikahan Fandi & Mitha"
   }, []);
 
   return (
     <BrowserRouter>
-      <RouteApp />
+        <RouteApp />
     </BrowserRouter>
   );
 }

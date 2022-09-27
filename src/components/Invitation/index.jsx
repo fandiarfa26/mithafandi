@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { doc, getDoc } from 'firebase/firestore';
+import DocumentMeta from 'react-document-meta';
 
 import db from '../../firebase';
 import Message from '../Message'
@@ -45,6 +46,7 @@ const Invitation = () => {
           code: inviteeSnapshot.id,
           name: inviteeSnapshot.data().name,
           greet: inviteeSnapshot.data().greet,
+          from: inviteeSnapshot.data().invitee_from
         });
       }
       setLoading(false);
@@ -56,7 +58,20 @@ const Invitation = () => {
 
   useEffect(() => {
     getInvitee();
+    document.title = invitee.from === 'Fandi'? "Pernikahan Fandi & Mitha" : "Pernikahan Mitha & Fandi";
   }, [getInvitee]);
+
+
+  const meta = {
+    title: invitee.from === 'Fandi'? "Pernikahan Fandi & Mitha" : "Pernikahan Mitha & Fandi",
+    description: 'Kami mengundang Anda untuk hadir di acara pernikahan kami',
+    meta: {
+      charset: 'utf-8',
+      name: {
+        keywords: 'react,meta,document,html,tags'
+      }
+    }
+  };
 
   if (loading) {
     return <LoadingPage/>
@@ -66,6 +81,7 @@ const Invitation = () => {
     }
 
     return (
+      <DocumentMeta {...meta}>
       <SwitchTransition>
      <CSSTransition
        key={open ? "1" : "0"}
@@ -77,19 +93,19 @@ const Invitation = () => {
           <Front invitee={invitee} setOpen={setOpen}/>
         : (
           <div>
-            <Hero/>
+            <Hero from={invitee.from}/>
             <div className="relative flex flex-col bg-white lg:flex-row">
                 <SideText/>
                 <div className='flex-1 lg:px-10'>
                   <Quran/>
                   <div className='relative z-0 py-20 overflow-hidden border-4 lg:overflow-visible drop-shadow-xl bg-coklat-light border-coklat-dark'>
-                    <Bio greet={invitee.greet}/>
+                    <Bio greet={invitee.greet} from={invitee.from}/>
                     <Schedule/>
                     <Gallery/>
-                    <Gift/>
+                    <Gift  from={invitee.from}/>
                     <Protocol/>
                     <Message invitee={invitee}/>
-                    <Thanks greet={invitee.greet}/>
+                    <Thanks greet={invitee.greet} from={invitee.from}/>
                     <img src={topRightFlower} alt="Top Right Flower" className='absolute top-0 right-0 h-28 lg:h-48' />
                     <img src={bottomLeftFlower} alt="Bottom Left Flower" className='absolute bottom-0 left-0 h-28 lg:h-48' />
                   </div>
@@ -105,6 +121,7 @@ const Invitation = () => {
        
      </CSSTransition>
    </SwitchTransition>
+   </DocumentMeta>
     )
     
   }

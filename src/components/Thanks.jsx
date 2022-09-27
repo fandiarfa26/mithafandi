@@ -3,7 +3,7 @@ import frameImg from '../assets/images/flower_frame_landscape.png'
 import couplePhoto from '../assets/images/couple2.jpg'
 import CoupleName from './CoupleName'
 
-const Thanks = ({greet}) => {
+const Thanks = ({greet, from}) => {
   return (
     <div className='px-5 mt-10 lg:px-20 lg:mt-20'>
       <div className="flex flex-col items-center gap-5">
@@ -18,7 +18,7 @@ const Thanks = ({greet}) => {
           <img src={frameImg} alt="frame" className='absolute inset-x-auto scale-125 -top-1 lg:top-8 w-96' />
         </div>
         <div className='mt-10 mb-5 text-center lg:mt-20 lg:mb-10 lg:text-xl font-bree'>Kami yang berbahagia</div>
-        <CoupleName/>
+        <CoupleName from={from}/>
       </div>
     </div>
   )
