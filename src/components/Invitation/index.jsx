@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { doc, getDoc } from 'firebase/firestore';
-import DocumentMeta from 'react-document-meta';
 
 import db from '../../firebase';
 import Message from '../Message'
@@ -58,20 +57,9 @@ const Invitation = () => {
 
   useEffect(() => {
     getInvitee();
-    document.title = "Pernikahan Fandi & Mitha";
+    
   }, [getInvitee]);
 
-
-  const meta = {
-    title: "Pernikahan Fandi & Mitha",
-    description: 'Kami mengundang Anda untuk hadir di acara pernikahan kami',
-    meta: {
-      charset: 'utf-8',
-      name: {
-        keywords: 'react,meta,document,html,tags'
-      }
-    }
-  };
 
   if (loading) {
     return <LoadingPage/>
@@ -81,7 +69,6 @@ const Invitation = () => {
     }
 
     return (
-      <DocumentMeta {...meta}>
       <SwitchTransition>
      <CSSTransition
        key={open ? "1" : "0"}
@@ -121,7 +108,6 @@ const Invitation = () => {
        
      </CSSTransition>
    </SwitchTransition>
-   </DocumentMeta>
     )
     
   }
