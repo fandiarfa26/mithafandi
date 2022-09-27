@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import DocumentMeta from 'react-document-meta';
 
 import Invitation from './components/Invitation';
 import NotFound from './components/NotFound';

@@ -58,12 +58,12 @@ const Invitation = () => {
 
   useEffect(() => {
     getInvitee();
-    document.title = invitee.from === 'Fandi'? "Pernikahan Fandi & Mitha" : "Pernikahan Mitha & Fandi";
+    document.title = "Pernikahan Fandi & Mitha";
   }, [getInvitee]);
 
 
   const meta = {
-    title: invitee.from === 'Fandi'? "Pernikahan Fandi & Mitha" : "Pernikahan Mitha & Fandi",
+    title: "Pernikahan Fandi & Mitha",
     description: 'Kami mengundang Anda untuk hadir di acara pernikahan kami',
     meta: {
       charset: 'utf-8',
@@ -95,7 +95,7 @@ const Invitation = () => {
           <div>
             <Hero from={invitee.from}/>
             <div className="relative flex flex-col bg-white lg:flex-row">
-                <SideText/>
+                <SideText from={invitee.from}/>
                 <div className='flex-1 lg:px-10'>
                   <Quran/>
                   <div className='relative z-0 py-20 overflow-hidden border-4 lg:overflow-visible drop-shadow-xl bg-coklat-light border-coklat-dark'>

@@ -10,7 +10,7 @@ const IntroLayout = (props) => {
   return (
     <div>
       <div className="fixed">
-        <SideText/>
+        <SideText from={props.from}/>
       </div>
       <div className='w-screen bg-fixed bg-center bg-cover lg:h-screen' style={{ backgroundImage: `url(${bgFlower})`}}>
         <div className='flex flex-col items-center justify-center h-screen px-3 pb-3 lg:p-0 lg:flex-row bg-opacity-70 bg-ijo-dark'>
