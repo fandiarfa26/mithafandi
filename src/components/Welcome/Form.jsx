@@ -11,24 +11,25 @@ const WelcomeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigate(`/to/${code}`, {replace: false});
 
-    setLoading(true);
-    try {
-      const inviteeSnapshot = await getDoc(doc(db, "invitees", code));
-      if (!inviteeSnapshot.exists()) {
-        alert('Kode undangan tidak tersedia!');
-      } else {
-        let theName = inviteeSnapshot.data().name;
-        let nameUrl = theName.split(' ').join('+');
-        navigate(`/to/${code}-${nameUrl}`, {replace: false});
-      }
-      setLoading(false);
-      setCode("");
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
-    setLoading(false);
+    // setLoading(true);
+    // try {
+    //   const inviteeSnapshot = await getDoc(doc(db, "invitees", code));
+    //   if (!inviteeSnapshot.exists()) {
+    //     alert('Kode undangan tidak tersedia!');
+    //   } else {
+    //     let theName = inviteeSnapshot.data().name;
+    //     let nameUrl = theName.split(' ').join('+');
+    //     navigate(`/to/${code}-${nameUrl}`, {replace: false});
+    //   }
+    //   setLoading(false);
+    //   setCode("");
+    // } catch (error) {
+    //   console.error(error);
+    //   setLoading(false);
+    // }
+    // setLoading(false);
   }
 
   const loadBtn = () => {
