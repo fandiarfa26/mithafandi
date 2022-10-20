@@ -11,25 +11,24 @@ const WelcomeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate(`/to/${code}`, {replace: false});
 
-    // setLoading(true);
-    // try {
-    //   const inviteeSnapshot = await getDoc(doc(db, "invitees", code));
-    //   if (!inviteeSnapshot.exists()) {
-    //     alert('Kode undangan tidak tersedia!');
-    //   } else {
-    //     let theName = inviteeSnapshot.data().name;
-    //     let nameUrl = theName.split(' ').join('+');
-    //     navigate(`/to/${code}-${nameUrl}`, {replace: false});
-    //   }
-    //   setLoading(false);
-    //   setCode("");
-    // } catch (error) {
-    //   console.error(error);
-    //   setLoading(false);
-    // }
-    // setLoading(false);
+    setLoading(true);
+    try {
+      const inviteeSnapshot = await getDoc(doc(db, "invitees", code));
+      if (!inviteeSnapshot.exists()) {
+        alert('Kode undangan tidak tersedia!');
+      } else {
+        let theName = inviteeSnapshot.data().name;
+        let nameUrl = theName.split(' ').join('+');
+        navigate(`/to/${code}-${nameUrl}`, {replace: false});
+      }
+      setLoading(false);
+      setCode("");
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+    setLoading(false);
   }
 
   const loadBtn = () => {
@@ -52,7 +51,7 @@ const WelcomeForm = () => {
             className='w-full px-3 py-1 text-center uppercase bg-white border-2 lg:text-2xl border-slate-300 focus:outline-coklat-dark'
             required
             value={code}
-            onChange={ e => setCode(e.target.value) } />
+            onChange={ e => setCode(e.target.value.toLowerCase()) } />
         </label>
         {loadBtn()}
       </form>
