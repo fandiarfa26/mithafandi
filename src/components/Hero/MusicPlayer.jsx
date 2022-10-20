@@ -25,8 +25,10 @@ const MusicPlayer = () => {
         {
           isPlaying ? <TbMusic className="w-5 h-5"/> : <TbMusicOff className="w-5 h-5"/>
         }
-        
-        <span className='text-xs'>Tekan untuk { isPlaying ? 'mematikan' : 'menyalakan'}</span>
+        <div>
+          <div className='text-xs font-bold'>Ed Sheeran - Perfect</div>
+          <span className='text-xs'>Tekan untuk { isPlaying ? 'mematikan' : 'menyalakan'}</span>
+        </div>
       </div>
     </div>
   )
