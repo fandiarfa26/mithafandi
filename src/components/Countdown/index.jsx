@@ -10,11 +10,13 @@ const Countdown = () => {
 
   const getTime = useCallback(() => {
     let now = new Date().getTime();
-    let timeleft = theDate - now;
-    setDays(Math.floor(timeleft / (1000 * 60 * 60 * 24)));
-    setHours(Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-    setMinutes(Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60)));
-    setSeconds(Math.floor((timeleft % (1000 * 60)) / 1000));
+    if (now < theDate) {
+      let timeleft = theDate - now;
+      setDays(Math.floor(timeleft / (1000 * 60 * 60 * 24)));
+      setHours(Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      setMinutes(Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60)));
+      setSeconds(Math.floor((timeleft % (1000 * 60)) / 1000));
+    }
   }, [theDate]);
 
   useEffect(() => {
