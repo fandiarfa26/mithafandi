@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import { doc, getDoc } from 'firebase/firestore';
 
-import db from '../../firebase';
+import invitees from '../../data/invitees';
 import Message from '../Message'
 import Front from './Front';
 import SideText from '../SideText';
@@ -21,54 +20,28 @@ import bottomLeftFlower from '../../assets/images/bottomleft_flower.png'
 import Protocol from '../Protocol';
 import Thanks from '../Thanks';
 import Credit from '../Credit';
-import LoadingPage from '../LoadingPage';
 import NotFound from '../NotFound';
 import Gallery from '../Gallery';
 
 const Invitation = () => {
   const { inviteeId } = useParams();
+  const code = inviteeId.split('-')[0];
+  const inviteeData = invitees[code];
 
-  const [loading, setLoading] = useState(true);
-  const [invitee, setInvitee] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const getInvitee = useCallback(async () => {
-    console.log('get invitee')
-    setLoading(true);
-    try {
-      const inviteeSnapshot = await getDoc(doc(db, "invitees", inviteeId.split('-')[0]));
+  if (!inviteeData) {
+    return <NotFound/>
+  }
 
-      if (!inviteeSnapshot.exists()) {
-        setInvitee({});
-      } else {
-        setInvitee({
-          code: inviteeSnapshot.id,
-          name: inviteeSnapshot.data().name,
-          greet: inviteeSnapshot.data().greet,
-          from: inviteeSnapshot.data().invitee_from
-        });
-      }
-      setLoading(false);
-    } catch (error) {
-      console.error(error.message);
-      setLoading(false);
-    }
-  }, [inviteeId]);
+  const invitee = {
+    code,
+    name: inviteeData.name,
+    greet: inviteeData.greet,
+    from: inviteeData.invitee_from,
+  };
 
-  useEffect(() => {
-    getInvitee();
-    
-  }, [getInvitee]);
-
-
-  if (loading) {
-    return <LoadingPage/>
-  } else {
-    if (invitee.name === undefined) {
-      return <NotFound/>
-    }
-
-    return (
+  return (
       <SwitchTransition>
      <CSSTransition
        key={open ? "1" : "0"}
@@ -109,10 +82,6 @@ const Invitation = () => {
      </CSSTransition>
    </SwitchTransition>
     )
-    
-  }
-
-  
 }
 
 export default Invitation

@@ -1,41 +1,23 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { doc, getDoc } from 'firebase/firestore';
 
-import db from '../../firebase';
+import invitees from '../../data/invitees';
 
 const WelcomeForm = () => {
   const [code, setCode] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    setLoading(true);
-    try {
-      const inviteeSnapshot = await getDoc(doc(db, "invitees", code));
-      if (!inviteeSnapshot.exists()) {
-        alert('Kode undangan tidak tersedia!');
-      } else {
-        let theName = inviteeSnapshot.data().name;
-        let nameUrl = theName.split(' ').join('+');
-        navigate(`/to/${code}-${nameUrl}`, {replace: false});
-      }
-      setLoading(false);
-      setCode("");
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
+    const inviteeData = invitees[code];
+    if (!inviteeData) {
+      alert('Kode undangan tidak tersedia!');
+    } else {
+      let nameUrl = inviteeData.name.split(' ').join('+');
+      navigate(`/to/${code}-${nameUrl}`, {replace: false});
     }
-    setLoading(false);
-  }
-
-  const loadBtn = () => {
-    if (loading) {
-      return <button type="button" className="px-3 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-sm bg-ijo-dark">Tunggu...</button>
-    } 
-    return <button type="submit" className="px-3 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-sm bg-coklat-dark hover:bg-ijo-dark">Masuk</button>
+    setCode("");
   }
 
   return (
@@ -53,7 +35,7 @@ const WelcomeForm = () => {
             value={code}
             onChange={ e => setCode(e.target.value.toLowerCase()) } />
         </label>
-        {loadBtn()}
+        <button type="submit" className="px-3 py-1 text-xs text-white lg:px-4 lg:py-2 lg:text-sm bg-coklat-dark hover:bg-ijo-dark">Masuk</button>
       </form>
     </div>
   )

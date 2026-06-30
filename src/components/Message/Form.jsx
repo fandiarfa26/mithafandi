@@ -1,18 +1,14 @@
-import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
-import db from '../../firebase';
-import { FiSend, FiTrash2 } from 'react-icons/fi';
+import { FiSend } from 'react-icons/fi';
 
-const MessageForm = ({invitee, getMessages}) => {
+const MessageForm = ({invitee, onSubmit}) => {
   const [name, setName] = useState(invitee.name);
   const [message, setMessage] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     setError("");
 
     if (name.trim().length === 0) {
@@ -20,40 +16,12 @@ const MessageForm = ({invitee, getMessages}) => {
     } else if (message.trim().length === 0) {
       setError("Ucapan cuma spasi doang wkwk!");
     } else {
-      try {
-        const inviteeSnapshot = await getDoc(doc(db, "invitee", invitee.code));
-        let new_id = (+new Date()).toString();
-        await setDoc(doc(db, "messages", new_id), {
-          name: name,
-          message: message,
-          confirm: confirm,
-          invitee: inviteeSnapshot.ref,
-          date: serverTimestamp(),
-          deleted: false,
-        });
-        getMessages();
-        setName(invitee.name);
-        setMessage("");
-        setConfirm("");
-        setError("");
-        setLoading(false);
-      } catch (error) {
-        setError('Ups, gk bisa mengirim ucapan, coba lagi deh!');
-        setLoading(false);
-      }
+      onSubmit({ name, message, confirm });
+      setName(invitee.name);
+      setMessage("");
+      setConfirm("");
+      setError("");
     }
-  }
-
-  const loadButton = () => {
-    if (loading) {
-      return <button type="button" className="px-4 py-2 text-sm border-2 border-coklat-dark hover:border-ijo-dark hover:bg-ijo-light">Mengirim ...</button>
-    }
-    return (
-      <button type="submit" className="flex items-center gap-2 px-4 py-2 text-sm border-2 border-coklat-dark hover:border-ijo-dark hover:bg-ijo-light">
-        <span>Kirim ucapan</span>
-        <FiSend className='w-5 h-5'/>
-      </button>
-    )
   }
 
   return (
@@ -119,15 +87,15 @@ const MessageForm = ({invitee, getMessages}) => {
               </div>
               <div className="mt-2 text-xs text-slate-400">sekarang</div>
               <div className="text-sm">{ message === '' ? '[Tulis Ucapan]' : message.trim() }</div>
-              <span className='absolute top-0 right-0 p-2 text-white bg-red-400'>
-                <FiTrash2 className='w-4 h-4'/>
-              </span>
             </div>
             
           </div>
         </div>
         <div className="flex justify-center lg:justify-end">
-          {loadButton()}
+          <button type="submit" className="flex items-center gap-2 px-4 py-2 text-sm border-2 border-coklat-dark hover:border-ijo-dark hover:bg-ijo-light">
+            <span>Kirim ucapan</span>
+            <FiSend className='w-5 h-5'/>
+          </button>
         </div>
         
         {error && <div>Error! {error}</div>}
